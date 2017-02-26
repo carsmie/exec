@@ -26,16 +26,13 @@ const directoryList = (dir, filelist = []) => {
 };
 
 const writeFile = (folders) => {
-    console.log(folders);
     const html = compiledFunction({
         folders
     });
-    fs.writeFile("index.html", html, (err) => {
+    fs.writeFile('index.html', html, (err) => {
         if (err) {
             return console.log(err);
         }
-
-        console.log("The file was saved!");
     });
 }
 
