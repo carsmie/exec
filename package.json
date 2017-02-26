@@ -5,7 +5,10 @@
   "repository": "https://github.com/carsmie/exec.git",
   "author": "Carsten Mielke <carsten.mielke@kartverket.no>",
   "license": "MIT",
-  "scripts":{
+  "scripts": {
     "start": "node src/index.js"
+  },
+  "dependencies": {
+    "pug": "^2.0.0-beta11"
   }
 }

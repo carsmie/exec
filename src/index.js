@@ -1,5 +1,8 @@
+const pug = require('pug');
+// Compile the source code
+const compiledFunction = pug.compileFile('src/template.pug');
+
 const getAllFilesFromFolder = (dir) => {
-    console.log(dir);
     const filesystem = require("fs");
     let results = [];
 
@@ -16,9 +19,13 @@ const getAllFilesFromFolder = (dir) => {
     return results;
 };
 
-const writeFile = () => {
+const writeFile = (folders) => {
     const fs = require('fs');
-    fs.writeFile("index.html", "still Testing!", (err) => {
+    console.log(folders);
+    const html = compiledFunction({
+        folders
+    });
+    fs.writeFile("index.html", html, (err) => {
         if (err) {
             return console.log(err);
         }
@@ -28,5 +35,5 @@ const writeFile = () => {
 }
 
 const dir = process.argv[2] || __dirname;
-// writeFile();
-// getAllFilesFromFolder(dir);
+const folders = getAllFilesFromFolder(dir);
+writeFile(folders);
