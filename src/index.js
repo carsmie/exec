@@ -36,6 +36,11 @@ const writeFile = (folders) => {
     });
 }
 
+const copyFile = (dir, file = 'index.html') => {
+    fs.createReadStream(file).pipe(fs.createWriteStream(path.join(dir, file)));
+}
+
 const dir = process.argv[2] || __dirname;
 const folders = directoryList(dir);
 writeFile(folders);
+copyFile(dir);
