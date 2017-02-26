@@ -1,21 +1,28 @@
-const filesystem = require("fs");
+const fs = require("fs");
+const path = require("path");
 const pug = require('pug');
 // Compile the source code
 const compiledFunction = pug.compileFile('src/template.pug');
 
-const getAllFilesFromFolder = (dir) => {
-    let results = [];
-
-    filesystem.readdirSync(dir).forEach((file) => {
-        file = dir + '/' + file;
-        const stat = filesystem.statSync(file);
-
-        if (stat && stat.isDirectory()) {
-            results = results.concat(getAllFilesFromFolder(file))
-        } else results.push(file);
+// Lists all files in directorys
+const walkSync = (dir, filelist = []) => {
+    fs.readdirSync(dir).forEach(file => {
+        filelist = fs.statSync(path.join(dir, file)).isDirectory() ?
+            walkSync(path.join(dir, file), filelist) :
+            filelist.concat(path.join(dir, file));
 
     });
-    return results;
+    return filelist;
+}
+
+// Lists only directorys
+const directoryList = (dir, filelist = []) => {
+    fs.readdirSync(dir).forEach((file) => {
+        if (fs.statSync(path.join(dir, file)).isDirectory()) {
+            filelist.push(path.join(dir, file));
+        }
+    });
+    return filelist;
 };
 
 const writeFile = (folders) => {
@@ -33,5 +40,5 @@ const writeFile = (folders) => {
 }
 
 const dir = process.argv[2] || __dirname;
-const folders = getAllFilesFromFolder(dir);
+const folders = directoryList(dir);
 writeFile(folders);
