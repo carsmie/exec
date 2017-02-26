@@ -1,0 +1,8 @@
+{
+  "name": "exec",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/carsmie/exec.git",
+  "author": "Carsten Mielke <carsten.mielke@kartverket.no>",
+  "license": "MIT"
+}
