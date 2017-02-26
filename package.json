@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/carsmie/exec.git",
   "author": "Carsten Mielke <carsten.mielke@kartverket.no>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts":{
+    "start": "node src/index.js"
+  }
 }
