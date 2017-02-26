@@ -1,13 +1,12 @@
+const filesystem = require("fs");
 const pug = require('pug');
 // Compile the source code
 const compiledFunction = pug.compileFile('src/template.pug');
 
 const getAllFilesFromFolder = (dir) => {
-    const filesystem = require("fs");
     let results = [];
 
     filesystem.readdirSync(dir).forEach((file) => {
-
         file = dir + '/' + file;
         const stat = filesystem.statSync(file);
 
@@ -20,7 +19,6 @@ const getAllFilesFromFolder = (dir) => {
 };
 
 const writeFile = (folders) => {
-    const fs = require('fs');
     console.log(folders);
     const html = compiledFunction({
         folders
