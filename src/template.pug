@@ -1,4 +1,16 @@
-div
-    ul
-    each val, index in folders
-        li= index + ': ' + val
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='initial-scale=1.0, user-scalable=no, width=device-width')
+        meta(name='mobile-web-app-capable', content='yes')
+        title Project list
+        script(type='text/javascript' src="#{'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'}")
+        link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    body
+        h1 Project list
+        div.panel.panel-default
+            div.panel-body
+                ul.list-group
+                each val, index in folders
+                    li.list-group-item: a(href=val) !{val}
