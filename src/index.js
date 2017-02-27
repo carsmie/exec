@@ -1,4 +1,5 @@
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
 const pug = require('pug');
 // Compile the source code
@@ -28,6 +29,7 @@ const directoryList = (dir, filelist = []) => {
 // write index.html
 const writeFile = (folders) => {
     const html = compiledTemplate({
+        username: os.userInfo().username,
         folders
     });
     fs.writeFile('index.html', html, (err) => {
