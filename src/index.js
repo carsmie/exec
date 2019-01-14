@@ -53,7 +53,7 @@ const copyFile = (dir, file = 'index.html') => {
 
 const args = process.argv.slice(2);
 const dir = args[0] || __dirname;
-const hostname = args[1] || 'localhost:8080';
+const hostname = args[1] || 'localhost:8080/';
 const relative = args[2] || false;
 const folders = directoryList(dir, relative);
 writeFile(folders, hostname);

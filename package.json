@@ -9,6 +9,6 @@
     "start": "node src/index.js"
   },
   "dependencies": {
-    "pug": "^2.0.0-beta11"
+    "pug": "^2.0.3"
   }
 }
